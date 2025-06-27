@@ -1,0 +1,8 @@
+export const PICTURE = "ic:baseline-image";
+export const COMMENT = "ic:sharp-insert-comment";
+export const POSTS = "mdi:post";
+export const NEWSPAPER = "ic:baseline-newspaper";
+export const LIST = "ic:round-list";
+export const PHONE = "ic:baseline-local-phone";
+export const STORE = "ic:baseline-store";
+export const OPTIONS = "mage:dots";

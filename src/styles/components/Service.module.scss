@@ -1,0 +1,29 @@
+.service {
+    padding: 16px 0 20px 10px;
+    color: rgb(32, 33, 36);
+    border-bottom: 1px solid rgb(232, 234, 237);
+    flex-basis: 47%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: left;
+    height: fit-content;
+    font-size: max(14px, 1vw);
+
+    span {
+        font-weight: 600;
+    }
+
+}
+
+.servicesList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+@media (min-width: 900px) {
+    .service {
+        max-width: 47%;
+    }
+}

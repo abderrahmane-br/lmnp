@@ -1,0 +1,12 @@
+.carousel {
+    width: 100%;
+    height: 34vw;
+    max-height: 34vw;
+    overflow-y: hidden;
+    background-position-y: center;
+    background-size: 100% 155%;
+    
+    .banner {
+        max-width: 100%;
+    }
+}

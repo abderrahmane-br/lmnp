@@ -1,0 +1,71 @@
+.postsList {
+    display: flex;
+    gap: 20px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+
+.postCard {
+    width: 422px;
+    min-width: 422px;
+    text-align: left;
+    border: 1px solid rgb(232, 234, 237);
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+    border-radius: 8px;
+
+    .illustr {
+        width: 100%;
+        height: 49%;
+    }
+
+    .postContainer {
+        padding: 23px 20px 14px;
+    }
+
+    .post {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        line-height: 1.5;
+        color: rgb(60, 64, 67);
+    }
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 2px 3px 0 rgba(60, 64, 67, .3), 0 1px 4px 2px rgba(60, 64, 67, .15);
+    }
+
+}
+
+
+.postCardHeader {
+    display: flex;
+    font-weight: 500;
+    line-height: 1.5;
+    padding: 14px 20px 8px;
+
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 12px;
+    }    
+
+    .icon {
+        width: 25px;
+        height: 35px;
+        color: #1A73E8;
+    }
+
+    .date {
+        font-size: .95em;
+        font-weight: 400;
+        color: rgb(95, 99, 104);
+    }
+}

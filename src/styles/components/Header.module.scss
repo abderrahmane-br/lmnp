@@ -1,0 +1,33 @@
+.header {
+    position: absolute;
+    top:34vw;
+    background: white;
+    z-index: 10;
+    padding: 2.6vw;
+    width: 76%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+
+    font-size: max(18px, 1.56vw);
+    box-shadow: 0 1px 10px 1px rgba(60, 64, 67, .2);
+
+    &.stuck {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: translateX(0%);
+    }
+
+}
+
+
+.placeholder {
+    visibility: hidden;
+    padding: 1rem;
+
+    &.stuck {
+        display: none;
+    }
+}
