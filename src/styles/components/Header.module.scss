@@ -45,7 +45,7 @@
         border: none;
         box-shadow: 0 10px 40px 10px rgb(232, 228, 228);
         padding: .8rem;
-        font-size: medium;
+        // font-size: medium;
         transition: top .5s ease;
     }
 
@@ -116,5 +116,9 @@
 @media (max-width: 480) {
     .header {
         top: 30vh;
+        
+        &>a:last-child {
+            font-size: small;
+        }
     }
 }
