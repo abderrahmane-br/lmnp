@@ -117,26 +117,44 @@
     .postPage {
         .postCard {
             width: 90vw;
-            min-width: 200px;
+            min-width: 300px;
 
 
             .illustr {
                 height: 75vw;
             }
+
         }
+    }
+
+    .postsList, .postPage .postCard {
+        .avatar {
+            width: 30px;
+            height: 30px;
         }
 
+        .postContainer {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+    }
+    
     .postsList {
         .postCard {
             width: 60vw;
-            min-width: 200px;
-
-            }
+            min-width: 300px;
+            
         }
+    }
 }
 @media (max-width: 480px) {
-    .postCard {
-        width: 90vw;
-        min-width: 200px;
-    }
+    .postsList {
+        width: 100vw;
+        .postCard {
+            width: 95vw;
+            min-width: 300px;
+
+        }
+        }
 }

@@ -5,10 +5,12 @@ import CTA from "./CTA";
 import Navbar from "./Navbar";
 import { PHONE } from "./icons";
 import { COMMENT } from "./icons";
+import ContactForm from "./ContactForm";
 
 function Header() {
   const [stuck, setStuck] = useState(false);
   const [placeholderHeight, setPlaceholderHeight] = useState(0);
+  const [showContact, setShowContact] = useState(false);
   const sentinelRef = useRef(null);
   const headerRef = useRef(null);
 
@@ -55,6 +57,12 @@ function Header() {
     };
   }, []);
 
+
+  function handleContact(e) {
+     e.preventDefault();
+     setShowContact(true);
+  }
+
   return (
     <>
       <div ref={sentinelRef} style={{ height: 1 }} />
@@ -68,7 +76,14 @@ function Header() {
             <CTA type={"blue"} icon={PHONE}>
               Appeler maintenant
             </CTA>
-            <CTA icon={COMMENT}>Nous Contacter</CTA>
+            <div 
+              onClick={(e) => handleContact(e)} 
+              style={{display: "flex", alignItems: "stretch"}}>
+              <CTA icon={COMMENT}>
+                Nous Contacter
+              </CTA>
+
+            </div>
           </div>
           <Navbar />
         </div>
@@ -79,6 +94,8 @@ function Header() {
         className={`${stuck ? styles.stuck : ""} ${styles.placeholder} `}
         style={{ height: placeholderHeight }}
       />
+
+      <ContactForm open={showContact} onClose={() => setShowContact(false)} />
     </>
   );
 }
