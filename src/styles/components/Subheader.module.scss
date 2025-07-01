@@ -1,5 +1,8 @@
 .subheader {
-    width: 100vw;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 100%;
     box-sizing: border-box;
     padding: 0.5rem 1rem;
     display: flex;
@@ -7,6 +10,8 @@
     align-items: center;
     box-shadow: 0 1px 10px 1px rgba(60, 64, 67, .2);
     gap: 10px;
+    margin-bottom: 8vh;
+    background-color: white;
 
 
     :last-child {
