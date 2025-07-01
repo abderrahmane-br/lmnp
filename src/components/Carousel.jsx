@@ -28,6 +28,7 @@ function Carousel() {
 
   return (
     <div
+      id="carousel"
       className={styles.carousel}
       style={{
         backgroundImage: `url(${images[current]})`,

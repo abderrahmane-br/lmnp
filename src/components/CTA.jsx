@@ -1,12 +1,11 @@
 import { Icon } from "@iconify/react";
-import { PHONE } from "./icons";
-import styles from "@/styles/components/CTA.module.scss";
+import styles from "@/styles/components/CTA.module.scss"
 
-function CTA({type}) {
+function CTA({type, icon, children}) {
   return (
-    <a href="tel:+334 85 69 64 07" classname={`${styles.cta} ${type ? type : ""}`}>
-        <Icon icon={PHONE} />
-        <span>Appeler maintenant</span>
+    <a href="tel:+334 85 69 64 07" className={`${styles.cta} ${type ? styles[type] : ""}`}>
+        <Icon icon={icon} />
+        <span>{children}</span>
     </a>
   )
 }

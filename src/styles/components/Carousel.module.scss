@@ -10,3 +10,10 @@
         max-width: 100%;
     }
 }
+
+@media (max-width: 480px) {
+    .carousel {
+        height: 30vh;
+        max-height: 30vh;
+    }
+}

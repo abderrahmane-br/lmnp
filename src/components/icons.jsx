@@ -6,3 +6,4 @@ export const LIST = "ic:round-list";
 export const PHONE = "ic:baseline-local-phone";
 export const STORE = "ic:baseline-store";
 export const OPTIONS = "mage:dots";
+export const LEFT_ARROW = "ic:round-arrow-back-ios";

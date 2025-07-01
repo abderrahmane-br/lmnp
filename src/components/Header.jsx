@@ -2,10 +2,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "@/styles/components/Header.module.scss";
 import CTA from "./CTA";
+import Navbar from "./Navbar";
+import { PHONE } from "./icons";
+import { COMMENT } from "./icons";
 
 function Header() {
   const [stuck, setStuck] = useState(false);
+  const [placeholderHeight, setPlaceholderHeight] = useState(0);
   const sentinelRef = useRef(null);
+  const headerRef = useRef(null);
 
   useEffect(() => {
     const observer = new window.IntersectionObserver(
@@ -16,16 +21,64 @@ function Header() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!headerRef.current) return;
+
+    const updatePlaceholder = () => {
+      const headerRect = headerRef.current.getBoundingClientRect();
+      const carouselElem = document.getElementById("carousel");
+      if (carouselElem) {
+        const carouselRect = carouselElem.getBoundingClientRect();
+        setPlaceholderHeight(headerRect.bottom - carouselRect.bottom);
+      } else {
+        setPlaceholderHeight(0);
+      }
+    };
+
+    const resizeObserver = new window.ResizeObserver(updatePlaceholder);
+    resizeObserver.observe(headerRef.current);
+
+    // Optionally observe the carousel as well
+    const carouselElem = document.getElementById("carousel");
+    let carouselObserver;
+    if (carouselElem) {
+      carouselObserver = new window.ResizeObserver(updatePlaceholder);
+      carouselObserver.observe(carouselElem);
+    }
+
+    // Initial set
+    updatePlaceholder();
+
+    return () => {
+      resizeObserver.disconnect();
+      if (carouselObserver) carouselObserver.disconnect();
+    };
+  }, []);
+
   return (
     <>
       <div ref={sentinelRef} style={{ height: 1 }} />
-      <header className={`${styles.header} ${stuck ? styles.stuck : ""}`}>
+      <header
+        ref={headerRef}
+        className={`${styles.header} ${stuck ? styles.stuck : ""}`}
+      >
         <div>
-            <span>LMNP Conseils - Conseils en investissements locatifs</span>
-            <CTA />
+          <span>LMNP Conseils - Conseils en investissements locatifs</span>
+          <div className={`${styles.ctaContainer}`}>
+            <CTA type={"blue"} icon={PHONE}>
+              Appeler maintenant
+            </CTA>
+            <CTA icon={COMMENT}>Nous Contacter</CTA>
+          </div>
+          <Navbar />
         </div>
+        <CTA type="blue" icon={PHONE}>Appeler maintenant</CTA>
       </header>
-      <div className={`${styles.placeholder} ${stuck ? styles.stuck : ""}`}>sticky header</div>
+
+      <div
+        className={`${stuck ? styles.stuck : ""} ${styles.placeholder} `}
+        style={{ height: placeholderHeight }}
+      />
     </>
   );
 }
