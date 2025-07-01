@@ -11,7 +11,7 @@ function PostsList() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const { data, error } = await supabase.schema('gmb_ads').from('annonces').select('*').is("publié", true)
+      const { data, error } = await supabase.schema('gmb_ads').from('annonces').select('*').is("publié", false)
       if (error) console.error(error)
       else setPosts(data)
     }

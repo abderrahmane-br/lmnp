@@ -26,7 +26,7 @@ export default function PostsPage() {
           .schema("gmb_ads")
           .from("annonces")
           .select("*")
-          .is('publié', true);
+          .is('publié', false);
         setPosts(data);
         setLoading(false);
       };
