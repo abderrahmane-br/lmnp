@@ -87,7 +87,6 @@ function Header() {
           </div>
           <Navbar />
         </div>
-        <CTA type="blue" icon={PHONE}>Appeler maintenant</CTA>
       </header>
 
       <div
