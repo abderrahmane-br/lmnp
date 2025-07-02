@@ -12,7 +12,7 @@ function Subheader() {
   return (
     <div className={`${styles.subheader}`} >
         <Icon icon={LEFT_ARROW} onClick={() => router.back()} className={`${styles.arrow}`} />
-        <span>LMNP Conseils - Conseils en investissements locatifs</span>
+        <span className={`${styles.title}`}>LMNP Conseils - Conseils en investissements locatifs</span>
         <CTA type={"blue"} icon={PHONE} >Appeler maintenant</CTA>
     </div>
   )
