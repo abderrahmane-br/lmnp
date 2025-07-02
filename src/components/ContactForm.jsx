@@ -151,7 +151,7 @@ export default function ContactForm({ open, onClose }) {
               onFocus={handleFocus}
               onBlur={handleBlur}
               maxLength={1000}
-              placeholder="Je souhaiterais en savoir plus sur vos disponibilités et tarifs pour les services"
+              placeholder="Je souhaiterais en savoir plus sur vos services et discuter avec vous de notre projet.."
             />
             <div className={styles.counter}>
               {fields.message.length}/1,000
