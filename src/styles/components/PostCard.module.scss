@@ -51,7 +51,10 @@
     text-decoration: none;
     color: black;
     width: 30vw;
-    min-width: 350px;
+    max-width: 30vw;
+    // min-width: 350px;
+    flex-grow: 1;
+    flex-shrink: 1;
     text-align: left;
     border: 1px solid rgb(232, 234, 237);
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
@@ -89,7 +92,7 @@
     display: inline;
 
     &:hover {
-        color: blueviolet;
+        color: #1A73E8;
     }
 }
 
@@ -124,6 +127,13 @@
 }
 
 
+@media (max-width: 1278px) {
+    .postCard {
+        max-width: 40vw;
+    }
+}
+
+
 @media (max-width: 720px) {
     .postPage {
         .postCard {
@@ -154,7 +164,8 @@
     .postsList {
         .postCard {
             width: 60vw;
-            min-width: 300px;
+            min-width: 400px;
+            max-width: 60vw;
             
         }
     }
@@ -165,6 +176,7 @@
         .postCard {
             width: 95vw;
             min-width: 300px;
+            max-width: none;
 
         }
         }

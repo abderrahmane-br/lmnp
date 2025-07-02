@@ -1,8 +1,28 @@
 .section {
-    padding: 45px 0;
+    padding: 45px 6%;
     border-bottom: 1px solid rgb(232, 234, 237);
 
     &:first-child {
         padding-top: 0px;
+    }
+}
+
+.header {
+    display: flex;
+    color: #5F6368;
+    margin-bottom: 20px;
+    align-items: center;
+    gap: 5px;
+
+    .headerIcon {
+        color: #5F6368;
+        flex-shrink: 0;
+    }
+}
+
+
+@media (max-width: 1278px) {
+    .section {
+        padding: 45px 0;
     }
 }
