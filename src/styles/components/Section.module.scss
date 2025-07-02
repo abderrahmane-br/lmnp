@@ -1,4 +1,8 @@
 .section {
     padding: 45px 0;
     border-bottom: 1px solid rgb(232, 234, 237);
+
+    &:first-child {
+        padding-top: 0px;
+    }
 }

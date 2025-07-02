@@ -1,6 +1,6 @@
 .header {
     position: absolute;
-    top:34vw;
+    top:40vw;
     background: white;
     z-index: 10;
     padding: 2.6vw;
@@ -113,7 +113,7 @@
     
 }
 
-@media (max-width: 480) {
+@media (max-width: 480px) {
     .header {
         top: 30vh;
         
