@@ -71,7 +71,7 @@ function Header() {
         className={`${styles.header} ${stuck ? styles.stuck : ""}`}
       >
         <div>
-          <span>LMNP Conseils - Conseils en investissements locatifs</span>
+          <span className={`${styles.title}`}>LMNP Conseils - Conseils en investissements locatifs</span>
           <div className={`${styles.ctaContainer}`}>
             <CTA type={"blue"} icon={PHONE}>
               Appeler maintenant
