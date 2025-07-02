@@ -18,7 +18,7 @@ function PostCard(post) {
         {/* <img src={post.img_url} alt="illustration" className={`${styles.illustr}`} /> */}
         <div className={`${styles.postContainer}`}>
           <span className={`${styles.post}`}>{post.contenu}</span>
-          <a href="">more</a>
+          <span className={`${styles.more}`}>en savoir plus</span>
         </div>
     </div>
   )
