@@ -83,7 +83,6 @@
         cursor: pointer;
         box-shadow: 0 2px 3px 0 rgba(60, 64, 67, .3), 0 1px 4px 2px rgba(60, 64, 67, .15);
     }
-    
 }
 
 
@@ -126,6 +125,75 @@
     }
 }
 
+.postsCarousel {
+    margin: 2rem 0;
+    padding: 0.5rem 2rem;
+
+    :global {
+
+        .slick-prev,
+        .slick-next {
+            z-index: 1;
+
+            &:before {
+                display: block;
+                color: red;
+
+            }
+        }
+
+        .slick-prev {
+            left: -5px;
+        }
+
+        .slick-next {
+            right: -5px;
+        }
+
+        .slick-track {
+            padding-bottom: 10px;
+        }
+    }
+
+    .postCard {
+        max-width: none;
+        width: 90%;
+    }
+}
+
+.carouselSlide {
+    padding: 0 1rem;
+}
+
+.arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    padding: .2rem;
+    box-sizing: border-box;
+    background-color: #1A73E8;
+    color: white;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    transform: translateX(-50%);
+
+    &.right { 
+        transform: rotateZ(180deg) translateX(0);
+        left: 100%;
+    }
+
+    &.disabled {
+        opacity: 0.25;
+        cursor: not-allowed;
+    }
+}
 
 @media (max-width: 1278px) {
     .postCard {
@@ -180,4 +248,13 @@
 
         }
         }
+
+
+    .postsCarousel { 
+        width: 90vw;
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+        transform: translateX(-2.5vw);
+    }
 }
