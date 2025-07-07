@@ -7,8 +7,8 @@ function Navbar() {
 
   const navItems = [
     { label: "À propos", id: "a-propos" },
-    { label: "Posts", id: "posts" },
     { label: "Services", id: "services" },
+    { label: "Posts", id: "posts" },
   ];
 
   // Scroll tracking effect
