@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "@/styles/components/Carousel.module.scss";
 
 const images = [
@@ -7,17 +8,10 @@ const images = [
   "/images/background2.png",
 ];
 
-const intervalSeconds = 7; // Change image every 3 seconds
+const intervalSeconds = 7;
 
 function Carousel() {
   const [current, setCurrent] = useState(0);
-
-  // Preload the next image
-  useEffect(() => {
-    const nextIndex = (current + 1) % images.length;
-    const img = new window.Image();
-    img.src = images[nextIndex];
-  }, [current]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -27,14 +21,27 @@ function Carousel() {
   }, []);
 
   return (
-    <div
-      id="carousel"
-      className={styles.carousel}
-      style={{
-        backgroundImage: `url(${images[current]})`,
-        transition: "background-image 0.5s ease-in-out",
-      }}
-    >
+    <div id="carousel" className={styles.carousel}>
+      {images.map((src, index) => (
+        <div
+          key={src}
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            opacity: index === current ? 1 : 0,
+            transition: 'opacity 0.5s ease-in-out',
+          }}
+        >
+          <Image
+            src={src}
+            alt={`Slide ${index + 1}`}
+            priority={index === 0}
+            width={900}
+            height={500}
+          />
+        </div>
+      ))}
     </div>
   );
 }
