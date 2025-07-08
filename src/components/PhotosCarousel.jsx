@@ -41,8 +41,8 @@ function PhotosCarousel() {
     // centerMode: true,
     centerPadding: '0px',
     initialSlide: currentSlide,
-    nextArrow: <CarouselArrow right={true} />,
-    prevArrow: <CarouselArrow  />,
+    nextArrow: <CarouselArrow right={true} css={{left: "98%"}} />,
+    prevArrow: <CarouselArrow css={{left: "-1%"}} />,
 
     responsive: [
       {
