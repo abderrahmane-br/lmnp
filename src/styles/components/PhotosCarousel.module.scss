@@ -1,0 +1,22 @@
+.carousel {
+
+    // :global {
+    //     .slick-slide>div {
+    //         padding: 0 10px;
+    //         }
+    // }
+
+}
+
+.photo {
+    width: max(250px, 15vw);
+    height: max(250px, 15vw);
+    margin-right: 10px;
+}
+
+@media (max-width: 465px) {
+    .photo {
+        width: 90vw;
+        margin: 0;
+    }
+}
