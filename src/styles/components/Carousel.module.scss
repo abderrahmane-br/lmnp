@@ -12,6 +12,15 @@
     }
 }
 
+@media (max-width: 720px) { 
+    .carousel img {
+            width: 100%;
+            transform: none;
+            height: 100%;
+        }
+
+}
+
 @media (max-width: 480px) {
     .carousel {
         height: 30vh;
