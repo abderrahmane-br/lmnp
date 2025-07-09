@@ -40,6 +40,13 @@ function Carousel() {
             width={900}
             height={500}
           />
+          <Image
+            src={src}
+            alt={`Slide ${index + 1}`}
+            priority={index === 0}
+            width={900}
+            height={500}
+          />
         </div>
       ))}
     </div>
