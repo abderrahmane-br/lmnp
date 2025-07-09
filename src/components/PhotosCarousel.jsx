@@ -17,7 +17,7 @@ function PhotosCarousel() {
   useEffect(() => {
     const fetchPhotos = async () => {
       setIsLoading(true)
-      const { data, error } = await supabase.schema('gmb_ads').from('annonces').select('id, img_url').is("publié", false)
+      const { data, error } = await supabase.schema('gmb_ads').from('annonces').select('id, img_url').is("publie", false)
       if (error) {
         console.error(error)
       } else {
