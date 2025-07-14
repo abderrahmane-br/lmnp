@@ -9,8 +9,13 @@
     border: 2px solid #e8eaed;
     width: fit-content;
     border-radius: 2.5vw;
-    gap: 10px;
+    gap: max(5px, 0.65vw);
     align-items: center;
+
+    svg {
+        min-width: 25px;
+        min-height: 25px;
+    }
 
 }
 
