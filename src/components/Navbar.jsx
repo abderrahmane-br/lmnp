@@ -7,7 +7,7 @@ function Navbar() {
 
   const navItems = [
     { label: "À propos", id: "a-propos" },
-    { label: "Photos", id: "photos" },
+    // { label: "Photos", id: "photos" },
     { label: "Services", id: "services" },
     { label: "Posts", id: "posts" },
   ];
