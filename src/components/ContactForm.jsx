@@ -28,7 +28,7 @@ export default function ContactForm({ open, onClose }) {
     if (!fields.prenom.trim()) errs.prenom = "Le prénom est requis.";
     if (!fields.email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/))
       errs.email = "Adresse e-mail invalide.";
-    if (!fields.mobile.match(/^\+?\d{8,15}$/))
+    if (!fields.mobile.match(/^(?:(?:\+33)|0)[1-79]\d{8}$/))
       errs.mobile = "Numéro de mobile invalide.";
     if (!fields.message.trim()) errs.message = "Le message est requis.";
     return errs;
