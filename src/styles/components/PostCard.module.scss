@@ -25,6 +25,11 @@
         & .more {
             display: none;
         }
+
+        &>div:last-child {
+            display: flex;
+            padding: 0 10px 20px;
+        }
     }
 }
 
@@ -82,6 +87,10 @@
     &:hover {
         cursor: pointer;
         box-shadow: 0 2px 3px 0 rgba(60, 64, 67, .3), 0 1px 4px 2px rgba(60, 64, 67, .15);
+    }
+
+    &>div:last-child {
+        display: none;
     }
 }
 
@@ -204,6 +213,7 @@
 
 @media (max-width: 720px) {
     .postPage {
+        margin-bottom: 12vh;
         .postCard {
             width: 90vw;
             min-width: 300px;

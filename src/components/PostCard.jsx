@@ -2,7 +2,7 @@ import PostCardHeader from "./PostCardHeader"
 import Image from "next/image"
 import styles from "@/styles/components/PostCard.module.scss"
 import { useRouter } from "next/navigation";
-import Illustration from "../../public/images/annonce_13.png"
+import ReachOut from "./ReachOut";
 
 function PostCard(post) {
   const router = useRouter();
@@ -20,6 +20,7 @@ function PostCard(post) {
           <span className={`${styles.post}`}>{post.contenu}</span>
           <span className={`${styles.more}`}>en savoir plus</span>
         </div>
+        <ReachOut />
     </div>
   )
 }
