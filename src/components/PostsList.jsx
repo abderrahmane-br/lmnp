@@ -107,7 +107,7 @@ function PostsList() {
           className={`${styles.seeMoreButton} ${ctaStyles.cta} ${ctaStyles.blue}`}
           onClick={handleSeeMoreClick}
         >
-          Voir plus
+          Toutes les actualités 
         </Link>
       )}
     </>
