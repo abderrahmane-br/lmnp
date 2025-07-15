@@ -25,7 +25,7 @@ function Footer() {
         <div className={styles.section}>
           <h3>Contactez-nous</h3>
           <p>
-            <a href="tel:+33123456789"> {/* Replace with your actual phone number */}
+            <a href="tel:+334 85 69 64 07"> {/* Replace with your actual phone number */}
               <Icon icon={PHONE} style={{ verticalAlign: 'middle', marginRight: '5px' }} /> Appelez-nous
             </a>
           </p>
