@@ -8,7 +8,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <main>{children}</main>
-        <CTA type="blue" icon={PHONE}>Appeler maintenant</CTA>
+        {/* <CTA type="blue" icon={PHONE}>Appeler maintenant</CTA> */}
         <footer>© 2025</footer>
       </body>
     </html>
