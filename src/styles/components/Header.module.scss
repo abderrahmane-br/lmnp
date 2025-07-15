@@ -9,6 +9,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
+    max-width: 100vw;
+    overflow-x: hidden;
 
     font-size: max(18px, 1.56vw);
     box-shadow: 0 1px 10px 1px rgba(60, 64, 67, .2);
@@ -106,7 +108,7 @@
     
     .ctaContainer :last-child {
         border-radius: 50px;
-        padding: 4px 15px;
+        padding: 4px 4px 4px 10px;
 
         svg {
             width: 25px;

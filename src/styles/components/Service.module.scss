@@ -1,3 +1,6 @@
+@import "CTA.module.scss";
+
+
 .service {
     padding: 16px 0 20px 10px;
     color: rgb(32, 33, 36);
@@ -14,6 +17,23 @@
         font-weight: 600;
     }
 
+    
+}
+
+.reachOut {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    &>span {
+        color: #2962ff;
+        font-weight: 400;
+        font-size: large;
+    }
+
+    & :first-child {
+        margin-right: auto;
+    }
 }
 
 .servicesList {
