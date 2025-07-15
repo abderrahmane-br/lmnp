@@ -9,7 +9,7 @@ function Navbar() {
     { label: "À propos", id: "a-propos" },
     // { label: "Photos", id: "photos" },
     { label: "Services", id: "services" },
-    { label: "Posts", id: "posts" },
+    { label: "Actualités", id: "posts" },
   ];
 
   // Scroll tracking effect
