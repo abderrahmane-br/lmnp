@@ -15,8 +15,7 @@ function ContactCTA() {
   return (
     <>
       <div onClick={handleContact} >
-        <CTA icon={COMMENT}>
-          Nous Contacter
+        <CTA icon={COMMENT} type={"round-blue"}>
         </CTA>
       </div>
       <ContactForm open={showContact} onClose={() => setShowContact(false)} />
