@@ -19,7 +19,8 @@ export default function Home() {
       <section className={`${styles.main}`}>
         <Section >
           <SectionHeader icon={STORE} title={'À propos'} />
-          <div className={`${styles.preWrap}`}>{`✅ Spécialiste en `}<b>investissements locatifs meublés (LMNP)</b>{` depuis plus de 20 ans
+          <div className={`${styles.preWrap}`}>{`✅ Spécialiste en `}<b>investissements locatifs meublés (LMNP)</b>{` depuis plus de 20 ans.
+          
 Notre cabinet vous accompagne `}<b>de A à Z</b>{` dans votre projet de `}<b>location meublée non professionnelle, qu'il s'agisse de biens neufs ou en revente</b>{`.
 
 📞 `}<b>Appel et diagnostic patrimonial 100 % gratuit et sans engagement</b>{`
