@@ -74,13 +74,13 @@ function Header() {
           <span className={`${styles.title}`}>LMNP Conseils - Conseils en investissements locatifs</span>
           <div className={`${styles.ctaContainer}`}>
             <CTA type={"blue"} icon={PHONE}>
-              Consultation gratuite
+              Consultation Gratuite
             </CTA>
             <div 
               onClick={(e) => handleContact(e)} 
               style={{display: "flex", alignItems: "stretch"}}>
               <CTA icon={COMMENT}>
-                Nous écrire
+                Nous Écrire
               </CTA>
 
             </div>
