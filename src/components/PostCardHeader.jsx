@@ -8,7 +8,7 @@ import { Icon } from "@iconify/react";
 function PostCardHeader({date = '06-2025'}) {
   return (
     <div className={`${styles.postCardHeader}`}>
-        <Image src={Logo} alt="Logo" className={`${styles.avatar}`} />
+        {/* <Image src={Logo} alt="Logo" className={`${styles.avatar}`} /> */}
         <div>
           <div>LMNP Conseils - Conseils en investissements locatifs</div>
           <span className={`${styles.date}`}>{date}</span>
