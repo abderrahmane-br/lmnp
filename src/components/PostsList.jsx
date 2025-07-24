@@ -1,5 +1,6 @@
 "use client"
 import PostCard from "@/components/PostCard";
+import PostCardRich from "./PostCardRich";
 import styles from "@/styles/components/PostCard.module.scss";
 import ctaStyles from "@/styles/components/CTA.module.scss";
 import { supabase } from '../lib/supabaseClient'
@@ -14,6 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 function PostsList() {
   const [posts, setPosts] = useState([])
+  const [articles, setArticles] = useState([])
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const router = useRouter();
@@ -21,12 +23,35 @@ function PostsList() {
 
   useEffect(() => {
     const fetchPosts = async () => {
+
+      let posts = []
       setIsLoading(true)
-      const { data, error } = await supabase.schema('gmb_ads').from('annonces').select('*').is("publie", false)
+
+      const { data, error } = await supabase.schema('gmb_ads')
+      .from('annonces')
+      .select('*')
+      .is("publie", false)
+
+      console.log("data1 ", data)
+
+      posts = [...posts, ...data]
+
+
+      const now = get_date()
+
+      const { data: articlesSite, error:errorSite} = await supabase.schema('gmb_ads')
+      .from('articles_site_revises')
+      .select('*')
+      .lte('date_prevue', now)
+
+      console.log("articles site", articlesSite)
+      
+
       if (error) {
         console.error(error)
       } else {
         setPosts(data)
+        setArticles(articlesSite)
         setCurrentSlide(0)
       }
       setIsLoading(false)
@@ -38,6 +63,12 @@ function PostsList() {
   const handleSeeMoreClick = () => {
     router.push(`/posts/`, { state: { posts } });
   };
+
+  function get_date(){
+    let date = new Date();
+    date = date.toISOString().replace('Z', '').replace('T', ' ')
+    return date;
+  }
 
   const handleBeforeChange = (current, next) => {
     // Prevent the slide and redirect immediately if trying to go beyond the limit
@@ -94,6 +125,13 @@ function PostsList() {
     <>
       <div className={styles.postsCarousel}>
         <Slider {...sliderSettings} key={`slider-${posts.length}`}>
+          {
+            articles.map((art) => (
+              <div key={art.id} className={styles.carouselSlide}>
+                <PostCardRich {...art} />
+              </div>
+            ))
+          }
           {posts.slice(0, DISPLAY_LIMIT).map((post) => (
             <div key={post.id} className={styles.carouselSlide}>
               <PostCard {...post} />
