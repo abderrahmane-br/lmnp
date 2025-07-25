@@ -12,7 +12,7 @@ function PostCard(post) {
 
   return (
     <div className={`${styles.postCard}`} onClick={() => handlePostClick(post)}>
-        <PostCardHeader />
+        <PostCardHeader date={post.created_at.slice(0, 10)}/>
         <Image src={post.img_url} alt="illustration" className={`${styles.illustr}`} width={300} height={100}/>
 
         {/* <img src={post.img_url} alt="illustration" className={`${styles.illustr}`} /> */}

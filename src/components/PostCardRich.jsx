@@ -14,7 +14,7 @@ function PostCardRich(post) {
 
   return (
     <article className={`${styles.postCard}`} onClick={() => handlePostClick(post)}>
-        <PostCardHeader />
+        <PostCardHeader date={post.date_prevue.slice(0, 10)}/>
         <Image src={post.img_url ? post.img_url : FallbackImg} alt="illustration" className={`${styles.illustr}`} width={300} height={100}/>
 
         {/* <img src={post.img_url ? post.img_url : FallbackImg} alt="illustration" className={`${styles.illustr}`} /> */}

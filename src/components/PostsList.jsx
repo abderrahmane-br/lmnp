@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import CarouselArrow from "./CarouselArrow";
+import { get_date } from "@/lib/utils";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -43,7 +44,7 @@ function PostsList() {
       .from('articles_site_revises')
       .select('*')
       .lte('date_prevue', now)
-
+      .order('date_prevue', {ascending:false})
       console.log("articles site", articlesSite)
       
 
@@ -61,14 +62,11 @@ function PostsList() {
   }, [])
 
   const handleSeeMoreClick = () => {
-    router.push(`/posts/`, { state: { posts } });
+    const data = [posts, articles]
+    router.push(`/posts`, { state: { posts } });
   };
 
-  function get_date(){
-    let date = new Date();
-    date = date.toISOString().replace('Z', '').replace('T', ' ')
-    return date;
-  }
+
 
   const handleBeforeChange = (current, next) => {
     // Prevent the slide and redirect immediately if trying to go beyond the limit
