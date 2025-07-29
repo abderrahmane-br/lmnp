@@ -5,7 +5,7 @@ import PostCard from "@/components/PostCard";
 import PostCardRich from "@/components/PostCardRich";
 import { supabase } from "@/lib/supabaseClient";
 import styles from "@/styles/components/PostCard.module.scss";
-import { get_date } from "@/lib/utils";
+import { get_now } from "@/lib/utils";
 
 export default function PostsPage() {
   const [posts, setPosts] = useState([]);
@@ -21,7 +21,7 @@ export default function PostsPage() {
       setPosts(nav.posts);
       setLoading(false);
     } else {
-      const now = get_date();
+      const now = get_now();
 
       const fetchPost = async () => {
         const [postGmb, articleSite ]= await Promise.all([

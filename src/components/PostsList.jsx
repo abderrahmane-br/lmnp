@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import CarouselArrow from "./CarouselArrow";
-import { get_date } from "@/lib/utils";
+import { get_now } from "@/lib/utils";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -38,7 +38,7 @@ function PostsList() {
       posts = [...posts, ...data]
 
 
-      const now = get_date()
+      const now = get_now()
 
       const { data: articlesSite, error:errorSite} = await supabase.schema('gmb_ads')
       .from('articles_site_revises')
