@@ -9,7 +9,7 @@ import FallbackImg from "../../public/images/background2.png"
 function PostCardRich(post) {
   const router = useRouter();
   const handlePostClick = (post) => {
-    router.push(`/posts/${post.id}`, { state: { post } });
+    router.push(`/actualites/${post.url_slug}`, { state: { post } });
 };
 
   return (
