@@ -1,0 +1,24 @@
+import { NextResponse } from 'next/server';
+
+export async function GET() {
+  const base = 'https://lmnp-conseils.immo';
+
+  // Exemple statique ; ou générez dynamiquement via Supabase si besoin
+  const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <sitemap>
+        <loc>${base}/page-sitemap.xml</loc>
+        <changefreq>yearly</changefreq>
+        <lastmod>${new Date().toISOString()}</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>${base}/actualites-sitemap.xml</loc>
+        <changefreq>daily</changefreq>
+        <lastmod>${new Date().toISOString()}</lastmod>
+    </sitemap>
+</sitemapindex>`;
+
+  return new NextResponse(sitemapIndex, {
+    headers: { 'Content-Type': 'text/xml' }
+  });
+}
