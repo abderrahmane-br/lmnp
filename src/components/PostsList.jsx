@@ -139,7 +139,7 @@ function PostsList() {
       </div>
       {posts.length > DISPLAY_LIMIT && (
         <Link 
-          href={"/posts"}
+          href={"/actualites"}
           className={`${styles.seeMoreButton} ${ctaStyles.cta} ${ctaStyles.blue}`}
           onClick={handleSeeMoreClick}
         >
