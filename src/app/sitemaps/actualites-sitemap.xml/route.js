@@ -13,12 +13,12 @@ const dates = data.filter((d) => (d.year <= year) && (d.month <= month))
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?> 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> ${dates.map( ({ year, month }) =>
-    `<url>
+    `<sitemap>
         <loc>${base}/actualites-sitemap-${year}-${month}.xml</loc>
         <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
-    </url>`).join('')} 
+    </sitemap>`).join('')} 
 </urlset>`;
 
 return new Response(xml, {
