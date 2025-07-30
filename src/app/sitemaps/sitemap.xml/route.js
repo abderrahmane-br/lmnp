@@ -8,12 +8,10 @@ export async function GET() {
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
         <loc>${base}/page-sitemap.xml</loc>
-        <changefreq>yearly</changefreq>
         <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     </sitemap>
     <sitemap>
         <loc>${base}/actualites-sitemap.xml</loc>
-        <changefreq>daily</changefreq>
         <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     </sitemap>
 </sitemapindex>`;
