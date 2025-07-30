@@ -22,7 +22,6 @@ export async function GET(req, {params}) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> ${posts.map((post) =>
     `<url>
         <loc>${base}/actualites/${post.url_slug}</loc>
-        <datepub>${post.date_prevue.slice(0,10)}</datepub>
     </url>`).join('')} 
 </urlset>`;
 
