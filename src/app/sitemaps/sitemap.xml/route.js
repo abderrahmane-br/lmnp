@@ -10,10 +10,6 @@ export async function GET() {
         <loc>${base}/page-sitemap.xml</loc>
         <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     </sitemap>
-    <sitemap>
-        <loc>${base}/actualites-sitemap.xml</loc>
-        <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    </sitemap>
 </sitemapindex>`;
 
   return new NextResponse(sitemapIndex, {
