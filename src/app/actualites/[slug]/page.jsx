@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
   const {data, error} = await fetchPost(params.slug);
   if(!error)
     return {
-      title: `${data.titre}`,
+      title: `Actualité: ${data.titre}`,
       description:  "Lisez notre article pour en savoir plus.",
     };
   else 
