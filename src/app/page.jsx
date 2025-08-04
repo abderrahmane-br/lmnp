@@ -52,7 +52,7 @@ Nos clients choisissent LMNP Conseils pour :
           <SectionHeader icon={PICTURE} title={'Photos'} />
           <PhotosCarousel />
         </Section> */}
-        <Section >
+        <Section id="assistant" >
           <Chat />
         </Section>
         <Section id="services">
