@@ -7,3 +7,4 @@ export const PHONE = "ic:baseline-local-phone";
 export const STORE = "ic:baseline-store";
 export const OPTIONS = "mage:dots";
 export const LEFT_ARROW = "ic:round-arrow-back-ios";
+export const SEND = "fluent:send-28-filled";

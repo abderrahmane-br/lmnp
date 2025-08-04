@@ -5,6 +5,7 @@ import Carousel from "@/components/Carousel";
 import Header from "@/components/Header";
 import ServicesList from "@/components/ServicesList";
 import SectionHeader from "@/components/SectionHeader"
+import Chat from "@/components/chat/Chat";
 import PhotosCarousel from "@/components/PhotosCarousel";
 import { PICTURE, LIST, POSTS, STORE } from "@/components/icons";
 
@@ -48,6 +49,9 @@ Nos clients choisissent LMNP Conseils pour :
           <SectionHeader icon={PICTURE} title={'Photos'} />
           <PhotosCarousel />
         </Section> */}
+        <Section >
+          <Chat />
+        </Section>
         <Section id="services">
           <SectionHeader icon={LIST} title={'Services'} />
           <ServicesList />
