@@ -26,3 +26,10 @@ export async function slugify_url() {
   }
 }
 
+export async function fetchPost(slug) { return await supabase
+          .schema("gmb_ads")
+          .from("articles_site_revises")
+          .select("*")
+          .eq("url_slug", slug)
+          .single();
+        }
