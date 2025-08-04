@@ -28,7 +28,6 @@ export async function GET(req, {params}) {
         <loc>${base}/actualites/${post.url_slug}</loc>
         <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
         <changefreq>never</changefreq>
-        <priority></priority>
     </url>`).join('')} 
 </urlset>`;
 
