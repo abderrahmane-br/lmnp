@@ -1,6 +1,11 @@
 import styles from '@/styles/components/MentionsLegales.module.scss';
 import Subheader from '@/components/Subheader';
 
+export const metadata = {
+  title: 'Mentions légales | LMNP Conseils',
+  description: `Consultez les mentions légales du site : informations sur l’éditeur, l’hébergement, la propriété intellectuelle et les conditions d’utilisation.`,
+};
+
 function MentionsLegales() {
   return (
     <>

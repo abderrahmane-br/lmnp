@@ -7,6 +7,11 @@ import { supabase } from "@/lib/supabaseClient";
 import styles from "@/styles/components/PostCard.module.scss";
 import { get_now } from "@/lib/utils";
 
+export const metadata = {
+  title: 'Actualités | LMNP Conseils',
+  description: `Découvrez nos derniers articles et annonces : conseils, analyses, et nouveautés pour rester informé au quotidien.`,
+};
+
 export default function PostsPage() {
   const [posts, setPosts] = useState([]);
   const [articles, setArticles] = useState([])
