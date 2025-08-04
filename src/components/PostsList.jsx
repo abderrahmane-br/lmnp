@@ -124,7 +124,7 @@ function PostsList() {
       <div className={styles.postsCarousel}>
         <Slider {...sliderSettings} key={`slider-${posts.length}`}>
           {
-            articles.map((art) => (
+            articles.slice(0, 6).map((art) => (
               <div key={art.id} className={styles.carouselSlide}>
                 <PostCardRich {...art} />
               </div>
