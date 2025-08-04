@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import styles from '@/styles/components/ChatUI.module.scss';
 import { SEND } from '../icons';
 import { Icon } from '@iconify/react';
+import Markdown from 'react-markdown';
 
 export default function ChatUI({chatID}) {
   const [messages, setMessages] = useState([
@@ -94,7 +95,7 @@ C’est gratuit, rapide et sans engagement."` },
               key={i}
               className={`${styles.message} ${msg.role === 'user' ? styles.user : styles.assistant}`}
             >
-              {msg.content}
+              {msg.role === "assistant" ? <Markdown>{msg.content}</Markdown> : msg.content}
             </div>
           ))}
         {loading && <div className={`${styles.loading}`}>
