@@ -13,8 +13,6 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
     `<url>
         <loc>${base}/${path}</loc>
         <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-        <changefreq>${freq}</changefreq>
-        <priority>${priority}</priority>
     </url>`).join('')} 
 </urlset>`;
 
