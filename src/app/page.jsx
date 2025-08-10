@@ -13,6 +13,9 @@ import { PICTURE, LIST, POSTS, STORE } from "@/components/icons";
 export const metadata = {
   title: 'LMNP Conseils | Votre achat locatif en LMNP, clés en mains et sécurisé.',
   description: `LMNP Conseils vous accompagne dans votre projet d'investissement en location meublée non professionnelle (LMNP). Stratégie patrimoniale, financière et fiscale. Sélection du bien en fonction de votre projet. Investissement clés en main avec loyers garantis.`,
+  alternates: {
+    canonical: "https://lmnp-conseils.immo/",
+  },
 };
 
 
