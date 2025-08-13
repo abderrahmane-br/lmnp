@@ -1,74 +1,89 @@
 // src/app/sitemaps/sitemap.xml/route.js
-import { NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabaseClient'
+import { NextResponse } from 'next/server';
+import { supabase } from '@/lib/supabaseClient';
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
-const BASE = 'https://lmnp-conseils.immo'
+const BASE = 'https://lmnp-conseils.immo';
+const fmt = (d) => new Date(d).toISOString().slice(0, 10);
 
-// ⚠️ Mets à jour cette date quand tu modifies réellement la page Mentions légales.
-const MENTIONS_LASTMOD = '2025-08-13'
-
-function pad(n) {
-  return String(n).padStart(2, '0')
-}
-function lastDayOfMonthISO(year, month1to12) {
-  // new Date(year, month, 0) => dernier jour du mois (month = 1..12)
-  return new Date(year, month1to12, 0).toISOString().slice(0, 10)
-}
-
-export async function GET() {
-  // 1) Date du dernier article (sert pour Accueil & /actualites & mois courant)
-  const { data: latest, error: e1 } = await supabase
+// Dernière actu tout confondu
+async function lastPostDateAll() {
+  const { data, error } = await supabase
     .schema('gmb_ads')
     .from('articles_site_revises')
     .select('date_prevue')
+    .lte('date_prevue', fmt(new Date()))
     .order('date_prevue', { ascending: false })
-    .limit(1)
+    .limit(1);
 
-  const lastArticleISO =
-    !e1 && latest?.[0]?.date_prevue
-      ? latest[0].date_prevue.slice(0, 10) // yyyy-mm-dd
-      : null
+  if (error || !data?.length) return fmt(new Date());
+  return fmt(data[0].date_prevue);
+}
 
-  // 2) lastmod réel du page-sitemap = max(lastArticle, mentions légales)
-  const pageSitemapLastmod =
-    [lastArticleISO, MENTIONS_LASTMOD].filter(Boolean).sort().slice(-1)[0] || null
+// Dernière actu pour un mois donné
+async function lastPostDateByMonth(year, month) {
+  const mm = String(month).padStart(2, '0');
+  const start = `${year}-${mm}-01`;
+  const today = fmt(new Date());
 
-  // 3) Liste des mois à publier dans l'index (RPC existant)
-  const { data: months, error: e2 } = await supabase.rpc('get_distinct_months')
+  const { data, error } = await supabase
+    .schema('gmb_ads')
+    .from('articles_site_revises')
+    .select('date_prevue')
+    .gte('date_prevue', start)
+    .lte('date_prevue', today)
+    .order('date_prevue', { ascending: false })
+    .limit(1);
 
-  const now = new Date()
-  const nowYM = `${now.getFullYear()}-${pad(now.getMonth() + 1)}`
+  // S’il n’y a rien pour ce mois, on met le 1er du mois (ne dépassera pas aujourd’hui)
+  return (!error && data?.length) ? fmt(data[0].date_prevue) : start;
+}
 
-  // 4) lastmod des sitemaps Actualités :
-  //    - Mois courant  => date du dernier article
-  //    - Mois passés   => dernier jour du mois
-  const newsSitemaps = (!e2 && months ? months : []).map(({ year, month }) => {
-    const ym = `${year}-${pad(month)}`
-    const lastmod =
-      ym === nowYM
-        ? (lastArticleISO || lastDayOfMonthISO(year, month))
-        : lastDayOfMonthISO(year, month)
-    return {
-      loc: `${BASE}/actualites-sitemap-${year}-${pad(month)}.xml`,
-      lastmod
+export async function GET() {
+  // Liste des mois disponibles (RPC déjà en place chez toi)
+  const { data: months, error } = await supabase.rpc('get_distinct_months');
+
+  const items = [];
+
+  // page-sitemap.xml : date = dernière actu globale (car Accueil + Actualités bougent avec les posts)
+  const lastPages = await lastPostDateAll();
+  items.push({ loc: `${BASE}/page-sitemap.xml`, lastmod: lastPages });
+
+  if (!error && months?.length) {
+    const now = new Date();
+    const y = now.getFullYear();
+    const m = now.getMonth() + 1;
+    const eligible = months.filter(
+      (t) => t.year < y || (t.year === y && t.month <= m)
+    );
+
+    for (const t of eligible) {
+      const last = await lastPostDateByMonth(t.year, t.month);
+      const mm = String(t.month).padStart(2, '0');
+      items.push({
+        loc: `${BASE}/actualites-sitemap-${t.year}-${mm}.xml`,
+        lastmod: last,
+      });
     }
-  })
-
-  const entries = [
-    { loc: `${BASE}/page-sitemap.xml`, lastmod: pageSitemapLastmod },
-    ...newsSitemaps
-  ]
+  }
 
   const xml =
-`<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${entries.map(e => `  <sitemap>
-    <loc>${e.loc}</loc>${e.lastmod ? `\n    <lastmod>${e.lastmod}</lastmod>` : ''}
-  </sitemap>`).join('\n')}
-</sitemapindex>`
+    `<?xml version="1.0" encoding="UTF-8"?>` +
+    `<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` +
+    items
+      .map(
+        (i) =>
+          `<sitemap><loc>${i.loc}</loc><lastmod>${i.lastmod}</lastmod></sitemap>`
+      )
+      .join('') +
+    `</sitemapindex>`;
 
-  return new NextResponse(xml, { headers: { 'Content-Type': 'text/xml' } })
+  return new NextResponse(xml, {
+    headers: {
+      'Content-Type': 'text/xml',
+      'Cache-Control': 'no-store, max-age=0',
+    },
+  });
 }
