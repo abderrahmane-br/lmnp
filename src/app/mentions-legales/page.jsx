@@ -1,3 +1,5 @@
+"use client";
+
 import styles from '@/styles/components/MentionsLegales.module.scss';
 import Subheader from '@/components/Subheader';
 
@@ -12,6 +14,22 @@ export const metadata = {
 export default function MentionsLegales() {
   const titleStyle = { color: '#d4a017' }; // accent discret
 
+  const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const nom = (form.elements.namedItem('Nom') as HTMLInputElement)?.value || '';
+    const email = (form.elements.namedItem('Email') as HTMLInputElement)?.value || '';
+    const message = (form.elements.namedItem('Message') as HTMLTextAreaElement)?.value || '';
+
+    const to = 'contact@lmnp-conseils.immo';
+    const subject = `Contact LMNP Conseils – ${nom}`;
+    const body =
+      `De : ${nom} <${email}>\n\nMessage :\n${message}\n\n—\nEnvoyé depuis : https://lmnp-conseils.immo/mentions-legales`;
+
+    window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    form.reset();
+  };
+
   return (
     <>
       <Subheader />
@@ -23,13 +41,13 @@ export default function MentionsLegales() {
         <div className={styles.article}>
           <p>
             Bienvenue sur <strong>LMNP Conseils</strong>, site d’information et de conseils dédiés au
-            statut de Loueur Meublé Non Professionnel (LMNP). Les informations ci‑après sont fournies
-            conformément à la loi n°2004‑575 du 21 juin 2004 pour la confiance dans l’économie numérique (LCEN).
+            statut de Loueur Meublé Non Professionnel (LMNP). Les informations ci-après sont fournies
+            conformément à la loi n°2004-575 du 21 juin 2004 pour la confiance dans l’économie numérique (LCEN).
             Cette page présente l’identité de l’éditeur, les informations d’hébergement, la protection des données
             et les règles d’utilisation du site.
           </p>
           <p>
-            Pour toute demande, merci d’utiliser le <a href="#contact-form">formulaire de contact</a> ci‑dessous.
+            Pour toute demande, merci d’utiliser le <a href="#contact-form">formulaire de contact</a> ci-dessous.
           </p>
         </div>
 
@@ -38,7 +56,7 @@ export default function MentionsLegales() {
           <h2 style={titleStyle}>1. Éditeur du site</h2>
           <p>
             Le site est édité par <strong>LMNP Conseils</strong>, domicilié au{' '}
-            <strong>8 rue Jean Gay, 69007 Lyon, France</strong>. 
+            <strong>8 rue Jean Gay, 69007 Lyon, France</strong>.
           </p>
         </div>
 
@@ -70,14 +88,14 @@ export default function MentionsLegales() {
           </p>
         </div>
 
-        {/* Données personnelles (RGPD) */}
+        {/* Données personnelles */}
         <div className={styles.article}>
           <h2 style={titleStyle}>5. Données personnelles</h2>
           <p>
             Les données transmises via nos formulaires (nom, email, message) sont utilisées uniquement pour
             répondre à votre demande et ne sont pas cédées à des tiers sans votre consentement. Le traitement
             s’effectue conformément au <strong>Règlement (UE) 2016/679 (RGPD)</strong> et à la
-            <strong> loi n°78‑17 modifiée “Informatique et Libertés”</strong>.
+            <strong> loi n°78-17 modifiée “Informatique et Libertés”</strong>.
           </p>
           <p>
             Vos droits (accès, rectification, suppression) peuvent être exercés via le{' '}
@@ -86,7 +104,7 @@ export default function MentionsLegales() {
           </p>
         </div>
 
-        {/* Cookies (récapitulatif minimal) */}
+        {/* Cookies */}
         <div className={styles.article}>
           <h2 style={titleStyle}>6. Cookies</h2>
           <p>
@@ -95,8 +113,7 @@ export default function MentionsLegales() {
             moment depuis votre navigateur et, si disponible, via notre gestionnaire de consentement.
           </p>
           <p>
-            En savoir plus (finalités, durée, gestion) : <a href="/politique-confidentialite#cookies">Politique de confidentialité – Cookies</a>.
-            {/* Si vous avez une CMP, remplacez par un lien qui ouvre le panneau : <a href="#" onClick={() => window.__cmp?.('showConsentTool')}>Gérer mes cookies</a> */}
+            En savoir plus : <a href="/politique-confidentialite#cookies">Politique de confidentialité – Cookies</a>.
           </p>
         </div>
 
@@ -110,35 +127,30 @@ export default function MentionsLegales() {
           </p>
         </div>
 
-        {/* Contact (mailto, simple) */}
+        {/* Contact */}
         <div className={styles.article}>
           <h2 id="contact-form" style={titleStyle}>Nous contacter</h2>
-          <form
-            className={styles.contactForm}
-            method="post"
-            action="mailto:contact@lmnp-conseils.immo"
-            encType="text/plain"
-          >
+          <form className={styles.contactForm} onSubmit={handleContactSubmit}>
             <label>
               Nom :
-              <input type="text" name="Nom" required />
+              <input type="text" name="Nom" required autoComplete="name" />
             </label>
             <label>
               Email :
-              <input type="email" name="Email" required />
+              <input type="email" name="Email" required autoComplete="email" inputMode="email" />
             </label>
             <label>
               Message :
-              <textarea name="Message" required />
+              <textarea name="Message" required autoComplete="off" />
             </label>
             <button type="submit">Envoyer</button>
             <p className={styles.note}>
-              Si votre client mail ne s’ouvre pas, écrivez‑nous à <strong>contact@lmnp-conseils.immo</strong>.
+              Si votre client mail ne s’ouvre pas, écrivez-nous à <strong>contact@lmnp-conseils.immo</strong>.
             </p>
           </form>
         </div>
 
-        {/* JSON-LD complet : WebSite -> Person -> LegalWebPage */}
+        {/* JSON-LD corrigé */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -171,22 +183,23 @@ export default function MentionsLegales() {
                   }
                 },
                 {
-                  "@type": "LegalWebPage",
+                  "@type": "WebPage",
                   "@id": "https://lmnp-conseils.immo/mentions-legales/#webpage",
                   "url": "https://lmnp-conseils.immo/mentions-legales",
                   "name": "Mentions légales | LMNP Conseils",
                   "isPartOf": { "@id": "https://lmnp-conseils.immo/#website" },
                   "inLanguage": "fr-FR",
-                  "about": "Informations légales, éditeur, hébergement, données personnelles (RGPD), cookies et conditions d’utilisation du site LMNP Conseils.",
+                  "about": "Informations légales, éditeur, hébergeur, données personnelles (RGPD), cookies et conditions d’utilisation du site LMNP Conseils.",
                   "dateModified": "2025-08-13",
-                  "publisher": { "@id": "https://lmnp-conseils.immo/#person" },
-                  "breadcrumb": {
-                    "@type": "BreadcrumbList",
-                    "itemListElement": [
-                      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://lmnp-conseils.immo/" },
-                      { "@type": "ListItem", "position": 2, "name": "Mentions légales", "item": "https://lmnp-conseils.immo/mentions-legales" }
-                    ]
-                  }
+                  "publisher": { "@id": "https://lmnp-conseils.immo/#person" }
+                },
+                {
+                  "@type": "BreadcrumbList",
+                  "@id": "https://lmnp-conseils.immo/mentions-legales/#breadcrumb",
+                  "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://lmnp-conseils.immo/" },
+                    { "@type": "ListItem", "position": 2, "name": "Mentions légales", "item": "https://lmnp-conseils.immo/mentions-legales" }
+                  ]
                 }
               ]
             })
