@@ -1,5 +1,3 @@
-"use client";
-
 import styles from '@/styles/components/MentionsLegales.module.scss';
 import Subheader from '@/components/Subheader';
 
@@ -14,22 +12,6 @@ export const metadata = {
 export default function MentionsLegales() {
   const titleStyle = { color: '#d4a017' }; // accent discret
 
-  const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const nom = (form.elements.namedItem('Nom') as HTMLInputElement)?.value || '';
-    const email = (form.elements.namedItem('Email') as HTMLInputElement)?.value || '';
-    const message = (form.elements.namedItem('Message') as HTMLTextAreaElement)?.value || '';
-
-    const to = 'contact@lmnp-conseils.immo';
-    const subject = `Contact LMNP Conseils – ${nom}`;
-    const body =
-      `De : ${nom} <${email}>\n\nMessage :\n${message}\n\n—\nEnvoyé depuis : https://lmnp-conseils.immo/mentions-legales`;
-
-    window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    form.reset();
-  };
-
   return (
     <>
       <Subheader />
@@ -41,13 +23,14 @@ export default function MentionsLegales() {
         <div className={styles.article}>
           <p>
             Bienvenue sur <strong>LMNP Conseils</strong>, site d’information et de conseils dédiés au
-            statut de Loueur Meublé Non Professionnel (LMNP). Les informations ci-après sont fournies
-            conformément à la loi n°2004-575 du 21 juin 2004 pour la confiance dans l’économie numérique (LCEN).
+            statut de Loueur Meublé Non Professionnel (LMNP). Les informations ci‑après sont fournies
+            conformément à la loi n°2004‑575 du 21 juin 2004 pour la confiance dans l’économie numérique (LCEN).
             Cette page présente l’identité de l’éditeur, les informations d’hébergement, la protection des données
             et les règles d’utilisation du site.
           </p>
           <p>
-            Pour toute demande, merci d’utiliser le <a href="#contact-form">formulaire de contact</a> ci-dessous.
+            Pour toute demande, écrivez‑nous à{' '}
+            <a href="mailto:contact@lmnp-conseils.immo">contact@lmnp-conseils.immo</a>.
           </p>
         </div>
 
@@ -95,12 +78,12 @@ export default function MentionsLegales() {
             Les données transmises via nos formulaires (nom, email, message) sont utilisées uniquement pour
             répondre à votre demande et ne sont pas cédées à des tiers sans votre consentement. Le traitement
             s’effectue conformément au <strong>Règlement (UE) 2016/679 (RGPD)</strong> et à la
-            <strong> loi n°78-17 modifiée “Informatique et Libertés”</strong>.
+            <strong> loi n°78‑17 modifiée “Informatique et Libertés”</strong>.
           </p>
           <p>
-            Vos droits (accès, rectification, suppression) peuvent être exercés via le{' '}
-            <a href="#contact-form">formulaire de contact</a>. Pour plus de détails, consultez notre
-            page <a href="/politique-confidentialite">Politique de confidentialité</a>.
+            Pour exercer vos droits (accès, rectification, suppression), écrivez‑nous à{' '}
+            <a href="mailto:contact@lmnp-conseils.immo">contact@lmnp-conseils.immo</a>. Pour plus de détails,
+            consultez notre page <a href="/politique-confidentialite">Politique de confidentialité</a>.
           </p>
         </div>
 
@@ -125,29 +108,6 @@ export default function MentionsLegales() {
             Toute reproduction, diffusion ou modification, totale ou partielle, sans autorisation écrite,
             est interdite.
           </p>
-        </div>
-
-        {/* Contact */}
-        <div className={styles.article}>
-          <h2 id="contact-form" style={titleStyle}>Nous contacter</h2>
-          <form className={styles.contactForm} onSubmit={handleContactSubmit}>
-            <label>
-              Nom :
-              <input type="text" name="Nom" required autoComplete="name" />
-            </label>
-            <label>
-              Email :
-              <input type="email" name="Email" required autoComplete="email" inputMode="email" />
-            </label>
-            <label>
-              Message :
-              <textarea name="Message" required autoComplete="off" />
-            </label>
-            <button type="submit">Envoyer</button>
-            <p className={styles.note}>
-              Si votre client mail ne s’ouvre pas, écrivez-nous à <strong>contact@lmnp-conseils.immo</strong>.
-            </p>
-          </form>
         </div>
 
         {/* JSON-LD corrigé */}
