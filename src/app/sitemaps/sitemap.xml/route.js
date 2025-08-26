@@ -27,7 +27,7 @@ export async function GET() {
     </sitemap>
     ${dates.map( ({ year, month }) =>
     `<sitemap>
-            <loc>${base}/actualites-sitemap-${year}-${month}.xml</loc>
+            <loc>${base}/sitemap-posts-${year}-${month}.xml</loc>
             <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
       </sitemap>`).join('')
 }

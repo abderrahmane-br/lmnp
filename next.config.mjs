@@ -15,18 +15,18 @@ const nextConfig = {
         destination: '/sitemaps/page-sitemap.xml',
         permanent: true,
       },
+      // {
+      //   source: '/annonces-sitemap.xml',
+      //   destination: '/sitemaps/annonces-sitemap.xml',
+      //   permanent: true,
+      // },
+      // {
+      //   source: '/actualites-sitemap.xml',
+      //   destination: '/sitemaps/actualites-sitemap.xml',
+      //   permanent: true,
+      // },
       {
-        source: '/annonces-sitemap.xml',
-        destination: '/sitemaps/annonces-sitemap.xml',
-        permanent: true,
-      },
-      {
-        source: '/actualites-sitemap.xml',
-        destination: '/sitemaps/actualites-sitemap.xml',
-        permanent: true,
-      },
-      {
-        source: '/actualites-sitemap-:date.xml',
+        source: '/sitemap-posts-:date.xml',
         destination: '/sitemaps/actualites/:date',
         permanent: true,
       },
