@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export async function GET() {
-  const base = 'https://lmnp-conseils.immo';
+  const base = 'https://lmnp-conseils.immo/sitemaps';
   const {data, error} = await supabase.rpc('get_distinct_months');
 
   let dates = []
