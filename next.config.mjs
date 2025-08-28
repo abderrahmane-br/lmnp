@@ -5,16 +5,16 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: '/sitemap.xml',
-        destination: '/sitemaps/sitemap.xml',
-        permanent: true,
-      },
-      {
-        source: '/page-sitemap.xml',
-        destination: '/sitemaps/page-sitemap.xml',
-        permanent: true,
-      },
+      // {
+      //   source: '/sitemap.xml',
+      //   destination: '/sitemaps/sitemap.xml',
+      //   permanent: true,
+      // },
+      // {
+      //   source: '/page-sitemap.xml',
+      //   destination: '/sitemaps/page-sitemap.xml',
+      //   permanent: true,
+      // },
       // {
       //   source: '/annonces-sitemap.xml',
       //   destination: '/sitemaps/annonces-sitemap.xml',
@@ -25,11 +25,11 @@ const nextConfig = {
       //   destination: '/sitemaps/actualites-sitemap.xml',
       //   permanent: true,
       // },
-      {
-        source: '/sitemap-posts-:date.xml',
-        destination: '/sitemaps/actualites/:date',
-        permanent: true,
-      },
+      // {
+      //   source: '/sitemap-posts-:date.xml',
+      //   destination: '/sitemaps/actualites/:date',
+      //   permanent: true,
+      // },
     ];
   },
 };
