@@ -17,8 +17,6 @@ export async function GET() {
   }
 
 
-
-  // Exemple statique ; ou générez dynamiquement via Supabase si besoin
   const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
