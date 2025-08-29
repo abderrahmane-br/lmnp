@@ -8,6 +8,7 @@ export default function PostPage() {
 
 
 export async function generateMetadata({ params }) {
+  params = await params;
   const {data, error} = await fetchPost(params.slug);
   if(!error)
     return {

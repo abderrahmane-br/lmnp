@@ -8,12 +8,13 @@ import FallbackImg from "../../public/images/background2.png"
 
 function PostCardRich(post) {
   const router = useRouter();
-  const handlePostClick = (post) => {
+  const handlePostClick = (e, post) => {
+    e.preventDefault();
     router.push(`/actualites/${post.url_slug}`, { state: { post } });
 };
 
   return (
-    <article className={`${styles.postCard}`} onClick={() => handlePostClick(post)}>
+    <article className={`${styles.postCard}`} onClick={(e) => handlePostClick(e, post)}>
         <PostCardHeader date={post.date_prevue.slice(0, 10)} header={post.titre}/>
         <Image src={post.img_url ? post.img_url : FallbackImg} alt="illustration" className={`${styles.illustr}`} width={300} height={100}/>
 
@@ -33,7 +34,7 @@ function PostCardRich(post) {
 
             <span><Markdown>{post.conclusion}</Markdown></span>
           </div>
-          <span className={`${styles.more}`}>en savoir plus</span>
+          <a href={`https://lmnp-conseils.immo/actualites/${post.url_slug}`} className={`${styles.more}`} onClick={(e) => handlePostClick(e, post)}>en savoir plus</a>
         </div>
         <ReachOut />
     </article>
