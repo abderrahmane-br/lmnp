@@ -216,6 +216,7 @@ export default function CookieConsentBanner() {
           ? "granted"
           : "denied",
       });
+      window.dataLayer.push({event: "consent_update"})
     }
 
     CookieConsent.run({
