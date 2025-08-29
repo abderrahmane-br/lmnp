@@ -3,7 +3,7 @@ import '../styles/globals.scss';
 import CTA from "@/components/CTA";
 import { PHONE } from "@/components/icons";
 import Footer from '@/components/Footer';
-
+import CookieConsentBanner from '@/components/CookieConsentBanner';
 
 export const metadata = {
   title: 'LMNP Conseils | Votre achat locatif en LMNP, clés en mains et sécurisé.',
@@ -15,6 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="fr">
       <body>
         <main>{children}</main>
+        <CookieConsentBanner />
         {/* <CTA type="blue" icon={PHONE}>Appeler maintenant</CTA> */}
         {/* <footer>© 2025</footer> */}
         <Footer />

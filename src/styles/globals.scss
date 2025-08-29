@@ -27,6 +27,24 @@ body {
     }
 }
 
+
+/** This block is for cookie consent banner customization **/
+
+ #cc-main {
+
+
+     --cc-btn-primary-bg: #C9A84C;
+     --cc-btn-primary-border-color: #C9A84C;
+     --cc-btn-primary-hover-bg: #242325;
+     --cc-btn-primary-hover-border-color: #242325;
+
+     /** Also make toggles the same color as the button **/
+     --cc-toggle-on-bg: var(--cc-btn-primary-bg);
+
+     /** Make the buttons a bit rounder **/
+     --cc-btn-border-radius: 10px;
+ }
+
 @media (max-width: 720px) {
     body>a {
             visibility: visible;
